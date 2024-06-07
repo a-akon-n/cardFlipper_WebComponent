@@ -48,28 +48,30 @@ class CardFlip extends HTMLElement{
         if(event.target.className == "card"){
             const index = event.target.getAttribute("data-index");
             const target = event.target;
-            this.Flip(event.target);
-            if (this.choice == null){
-                this.choice = target;
-            }
-            else {
-                const index_choice = this.choice.getAttribute("data-index");
-                if ( index != index_choice){
-                    if (this.board[index] == this.board[index_choice]){
-                        this.board[index] = 0;
-                        this.board[index_choice] = 0;
-                        this.choice = null;
-                        if (this.checkWin()){
-                            document.getElementById("message_txt").style.visibility = 'visible';
-                            console.log("You win");
-                        }
-                    }
-                    else {
-                        setTimeout(() => {
-                            this.Flip(target);
-                            this.Flip(this.choice);
+            if (this.board[index] != 0){
+                this.Flip(event.target);
+                if (this.choice == null){
+                    this.choice = target;
+                }
+                else {
+                    const index_choice = this.choice.getAttribute("data-index");
+                    if ( index != index_choice){
+                        if (this.board[index] == this.board[index_choice]){
+                            this.board[index] = 0;
+                            this.board[index_choice] = 0;
                             this.choice = null;
-                        }, 500);
+                            if (this.checkWin()){
+                                document.getElementById("message_txt").style.visibility = 'visible';
+                                console.log("You win");
+                            }
+                        }
+                        else {
+                            setTimeout(() => {
+                                this.Flip(target);
+                                this.Flip(this.choice);
+                                this.choice = null;
+                            }, 500);
+                        }
                     }
                 }
             }
