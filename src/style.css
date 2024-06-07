@@ -1,0 +1,37 @@
+.board {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  padding: 10px;
+  background-color: aqua;
+  height: 500px;
+  width: 500px;
+}
+
+.card-container {
+  height: 100px;
+  width: 100px;
+  margin: 5px;
+  background-color: tan;
+  /* background: tan; */
+}
+
+.card {
+  height: 100px;
+  width: 100px;
+  text-align: center;
+}
+
+.message-board {
+  text-align-last: center;
+  width: 500px;
+}
+
+h1 {
+  visibility: hidden;
+}
+
+.reset-container {
+  text-align-last: center;
+  width: 470px;
+  margin: 15px;
+}
